@@ -2,7 +2,7 @@ name: Daily Commit
 
 on:
   schedule:
-    - cron: "30 22 * * *" # Runs daily at 10:30 PM UTC (4:00 AM IST)
+    - cron: "28 22 * * *"  # Runs daily at 10:28 PM UTC (3:58 AM IST)
 jobs:
   commit:
     runs-on: ubuntu-latest
