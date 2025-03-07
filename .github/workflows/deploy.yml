@@ -13,6 +13,11 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v3
 
+      - name: Set Git User
+        run: |
+          git config --global user.email "contactpiyushhere@gmail.com"
+          git config --global user.name "TheDevPiyush"
+
       - name: Make a New Commit
         run: |
           echo "Commit on $(date)" >> log.txt
