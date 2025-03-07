@@ -7,7 +7,7 @@ now = datetime.now()
 timestamp = now.strftime("%Y-%m-%d %H:%M:%S")
 
 with open(file_path, "a") as file:
-    file.write(f"Commit on {timestamp}\n")
+    file.write(f"Commit done on {timestamp}\n")
 
 os.system("git add .")
 os.system(f'git commit -m "Daily commit on {timestamp}"')
