@@ -1,0 +1,21 @@
+name: Daily Commit
+
+on:
+  schedule:
+    - cron: "46 3 * * *"
+
+jobs:
+  commit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.x"
+
+      - name: Run daily commit script
+        run: |
+          python daily_commit.py
