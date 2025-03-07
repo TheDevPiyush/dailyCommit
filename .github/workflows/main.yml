@@ -2,14 +2,15 @@ name: Daily Commit
 
 on:
   schedule:
-    - cron: "46 3 * * *"
-
+    - cron: "30 22 * * *" # Runs daily at 10:30 PM UTC (4:00 AM IST)
 jobs:
   commit:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
+        with:
+          fetch-depth: 0 # Fetches the entire commit history
 
       - name: Set up Python
         uses: actions/setup-python@v4
@@ -18,4 +19,14 @@ jobs:
 
       - name: Run daily commit script
         run: |
-          python daily_commit.py
+          # Write to a file (e.g., log.txt)
+          echo "Commit on $(date)" >> log.txt
+
+          # Configure Git
+          git config --global user.name "thedevpiyush"
+          git config --global user.email "contactpiyushhere@gmail.com"
+
+          # Add, commit, and push
+          git add .
+          git commit -m "Daily commit on $(date)"
+          git push origin main
